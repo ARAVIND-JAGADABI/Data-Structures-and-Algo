@@ -1,0 +1,18 @@
+arr = [3,1,4,5,0,2]
+stack = []
+pge = []
+for i in range(len(arr)):
+    cur = arr[i]
+    if len(stack) == 0:
+        pge.append(-1)
+    elif len(stack) > 0 and stack[-1] > cur:
+        pge.append(stack[-1])
+    elif len(stack) > 0 and stack[-1] <= cur:
+        while len(stack) > 0 and stack[-1] <= cur:
+            stack.pop()
+        if len(stack) == 0:
+            pge.append(-1)
+        else:
+            pge.append(stack[-1])
+    stack.append(cur)
+print(pge)
